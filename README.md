@@ -48,7 +48,7 @@ aws dynamodb update-table ^
     --table-name Music ^
     --attribute-definitions AttributeName=AlbumTitle,AttributeType=S ^
     --global-secondary-index-updates ^
-        "[{\"Create\":{\"IndexName\": \"AlbumTitle-index\",\"KeySchema\":[{\"AttributeName\":\"AlbumTitle\",\"KeyType\":\"HASH\"}],   "ProvisionedThroughput\": {\"ReadCapacityUnits\": 10, \"WriteCapacityUnits\": 5      },\"Projection\":{\"ProjectionType\":\"ALL\"}}}]"
+        "{\"Create\":{\"IndexName\": \"AlbumTitle-index\",\"KeySchema\":{\"AttributeName\":\"AlbumTitle\",\"KeyType\":\"HASH\"},   "ProvisionedThroughput\": {\"ReadCapacityUnits\": 10, \"WriteCapacityUnits\": 5      },\"Projection\":{\"ProjectionType\":\"ALL\"}}}"
 ```
 
 - Criar um index global secundário baseado no nome do artista e no título do álbum
@@ -123,3 +123,4 @@ aws dynamodb query \
     --key-condition-expression "SongTitle = :v_song and SongYear = :v_year" \
     --expression-attribute-values  '{":v_song":{"S":"Wasting Love"},":v_year":{"S":"1992"} }'
 ```
+![img_db_music](db_music.jpg)
